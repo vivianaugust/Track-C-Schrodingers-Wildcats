@@ -1,80 +1,33 @@
-# Q-volution Hackathon 2026: Official Resources
+# Schrodinger's Wildcats: Harmonic Oscillator
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Hosted By: Girls in Quantum](https://img.shields.io/badge/Org-Girls%20in%20Quantum-blueviolet)](https://girlsinquantum.com)
 
-**Event Dates:** February 23rd – March 1st, 2026  
-**Status:** 🟢 Active
+This project was completed for the **Girls in Quantum Q-volution QHackathon 2026 Track C**
 
-## 📖 About
+## 📖 Overview
 
-Welcome to the official open-source repository for the **Q-volution Hackathon 2026**.
+In this project, we implement the theoretical algorithm for solving linear differential equations outlined in "A Quantum Algorithm for Solving Linear Differential Equations: Theory and Experiment" by Tao Xin et al. (2020), and apply it to the case of a quantum harmonic oscillator to find it's potential and kinetic energies over the time interval [0,1].
 
-Girls in Quantum is a global, youth-led initiative dedicated to making quantum education accessible, especially for girls and young students. This repository mainly hosts learning resources for our participants.
-
-Our mission is to bridge the gap between theory and practice. Participants will use **open-source SDKs** (PyQuil, MerLin, Qiskit) to solve real-world problems in energy, finance, and simulation.
+We implemented this algorithm through Classiq, a software which allows for easy and high-level quantum circuit construction. 
 
 ---
 
-## 🏆 Challenge Tracks & Stack
+## 💻 Running the Code
 
-We have partnered with leading quantum providers to design four technical tracks.
+Our code is implemented using a Jupyter Notebook, allowing the user to individually run chunks of the code at a time. This section will be outlining what each numbered chunck of the code accomplishes to get to our final goal of calculating the harmonic oscillator's energy. 
 
-> **Note:** Full problem statements will be released on Feb 23rd. Use the `preparation-materials/` folder to study the required libraries now.
+### 1: Operator Logic
 
-### ⚡ Track A: Energy Grid Optimization
+Through breaking up the given second order differential equations into a system of first order equations, we obtain the linear equation form outlined in the paper (x(t) = Mx(0) + b) with M equal to the Qmod RY gate. The function "apply_m_power" outputs the respective matrix of M to some respective power N, which will be needed later in the algorithm. 
 
-- **Sponsor:** [Rigetti Computing](https://www.rigetti.com/)
-- **Mission:** Maximize the "Power Energy Section" (MPES) to prevent blackouts using Weighted Max-Cut problems on real-world grid data (South Carolina dataset).
-- **Open Source Stack:** `PyQuil`, `NetworkX`, `SciPy`.
-- **Hardware:** Top 10 teams gain access to the **84-qubit Ankaa-3** system.
-- **Difficulty:** Advanced
+### 2: Model Generator
 
-### 💸 Track B: Quantum Machine Learning (QML) in Finance
+We create the coefficients C_m through the formula mentioned in the paper. We then prepare our two registers: one ancilla register which will encode k - the iternation value of the taylor series - and one work register which will encode x(t). Note that in the paper, they use an additional ancilla register which acts a "switch" to encode both x(0) and b into the word register. However, because b = 0 in our linear equation, it can be known that the ancilla bit will only be in the |0> state, thus being unneccessary. 
 
-- **Sponsor:** [Quandela](https://quandela.com/)
-- **Mission:** Implement a QML model using Reservoir Computing to predict put/call option prices.
-- **Open Source Stack:** `MerLin` (Python), `PyTorch`.
-- **Difficulty:** Intermediate (ML background preferred)
+### 3: Metric Collection & Analysis
 
-### 🧪 Track C: Algorithms & Differential Equations
+### 4: Plotting Our Graphs 
 
-- **Sponsor:** [Classiq](https://www.classiq.io/)
-- **Mission:** Solve Linear Differential Equations using the Tao Xin (2020) algorithm to simulate kinetic/potential energies of a quantum harmonic oscillator.
-- **Open Source Stack:** `Classiq SDK` (Python), `Jupyter`.
-- **Difficulty:** Intermediate
 
-### 🌍 Track D: Social Impact (No-Code)
-
-- **Sponsor:** [Infleqtion](https://www.infleqtion.com/)
-- **Mission:** Design a quantum solution for a social cause using Design Thinking principles.
-- **Focus:** Accessible to high schoolers and beginners. No coding experience required.
-
----
-
-## 📂 Repository Structure
-
-- [`/preparation-materials`](./preparation-materials): **Start Here.** Study guides and reading lists for the specific algorithms (QAOA, QML, ODEs).
-- `/challenges`:  Detailed PDF descriptions of each track. We're hoping to host these on Aqora!
-- `/datasets`: Links to the public datasets used in Track A and B. Again, on Aqora!
-
-## 🤝 Community & Support
-
-- **Discord:** [Join the Community](https://discord.com/invite/xE9mfGSy)
-- **Website:** [girlsinquantum.com](https://www.girlsinquantum.com)
-- **Code of Conduct:** Please review our [Code of Conduct](https://www.girlsinquantum.com/terms).
-
----
-
-## 🙏 Acknowledgments
-
-We are proud to be supported by the leaders of the quantum industry who are investing in the open-source workforce of tomorrow:
-
-- **Rigetti Computing**
-- **Quandela**
-- **Classiq**
-- **Infleqtion UK**
-
-```
-
-```
+We want to again thank **Girls in Quantum**,**Classiq**, and also any other contributors who make efforst like this hackathon and the quantum industry possible!
