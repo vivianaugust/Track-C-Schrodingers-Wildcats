@@ -1,4 +1,4 @@
-# Schrodinger's Wildcats: Harmonic Oscillator
+# Schrodinger's Wildcats: LCU For Quantum Harmonic Oscillator
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](./LICENSE)
 [![Hosted By: Girls in Quantum](https://img.shields.io/badge/Org-Girls%20in%20Quantum-blueviolet)](https://girlsinquantum.com)
